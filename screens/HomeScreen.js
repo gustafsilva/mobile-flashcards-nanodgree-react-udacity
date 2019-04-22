@@ -4,9 +4,12 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 
+import Box from '../components/Box';
+import colors from '../constants/Colors';
 import { handleGetDecks } from '../store/actions/decks';
 
 
@@ -21,14 +24,40 @@ class HomeScreen extends React.Component {
     dispatch(handleGetDecks());
   }
 
+  renderEmptyDecks = () => (
+    <TouchableOpacity onPress={() => { }}>
+      <Box>
+        <Text style={styles.text}>
+          👋 If you do not have an account yet, register now!
+        </Text>
+      </Box>
+    </TouchableOpacity>
+  );
+
+  renderDecks = () => {
+    const { decks } = this.props;
+
+    return (
+      Object.keys(decks).map(key => (
+        <TouchableOpacity onPress={() => { }} key={key}>
+          <Box>
+            <Text style={styles.text}>{decks[key].title}</Text>
+          </Box>
+        </TouchableOpacity>
+      ))
+    );
+  }
+
+
   render() {
     const { decks } = this.props;
 
     return (
       <View style={styles.container}>
-        <Text style={styles.getStartedText}>
-          {JSON.stringify(decks)}
-        </Text>
+        {decks === null
+          ? this.renderEmptyDecks()
+          : this.renderDecks(decks)
+        }
       </View>
     );
   }
@@ -37,23 +66,21 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.light,
   },
-  getStartedText: {
-    fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    lineHeight: 24,
-    textAlign: 'center',
-  },
+  text: {
+    fontSize: 18,
+    color: colors.black,
+  }
 });
 
 HomeScreen.defaultProps = {
-  decks: {},
+  decks: null,
 };
 
 HomeScreen.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  decks: PropTypes.arrayOf(PropTypes.any),
+  decks: PropTypes.objectOf(PropTypes.any),
 };
 
 const mapStateToProps = ({ decks }) => ({

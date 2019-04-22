@@ -7,8 +7,6 @@ import { Provider } from 'react-redux';
 import AppNavigator from './navigation/AppNavigator';
 
 import store from './store';
-import FlashMobileStatusBar from './components/FlashMobileStatusBar';
-import colors from './constants/Colors';
 
 class App extends Component {
   render() {

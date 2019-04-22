@@ -5,7 +5,7 @@ import {
   ADD_CARD_TO_DECK,
 } from '../actions/decks';
 
-export const INIT_STATE_DECKS_STATE = [];
+export const INIT_STATE_DECKS_STATE = {};
 
 const decks = (state = INIT_STATE_DECKS_STATE, action) => {
   switch (action.type) {
