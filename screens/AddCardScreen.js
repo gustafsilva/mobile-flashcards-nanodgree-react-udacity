@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -49,7 +50,9 @@ class AddCardScreeen extends Component {
     return (
       <View style={styles.container}>
         <Box>
-          <Text style={styles.text}>🤓 Create a new Card, add a question and answer and click submit.</Text>
+          <Text style={styles.text}>
+            🤓 Create a new Card, add a question and answer and click submit.
+          </Text>
           <TextInput
             style={getPlatformOS() === 'ios' ? styles.titleInputIos : styles.titleInputAndroid}
             placeholder="Question"

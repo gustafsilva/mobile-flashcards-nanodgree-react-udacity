@@ -30,7 +30,6 @@ const styles = StyleSheet.create({
 });
 
 Deck.propTypes = {
-  id: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   questions: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
