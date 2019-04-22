@@ -1,21 +1,33 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
   View,
 } from 'react-native';
+import { connect } from 'react-redux';
+
+import { handleGetDecks } from '../store/actions/decks';
 
 
-export default class HomeScreen extends React.Component {
+class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
   };
 
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(handleGetDecks());
+  }
+
   render() {
+    const { decks } = this.props;
+
     return (
       <View style={styles.container}>
         <Text style={styles.getStartedText}>
-          Change this text and your app will automatically reload.
+          {JSON.stringify(decks)}
         </Text>
       </View>
     );
@@ -26,7 +38,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    marginTop: 25,
   },
   getStartedText: {
     fontSize: 17,
@@ -35,3 +46,18 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
+
+HomeScreen.defaultProps = {
+  decks: {},
+};
+
+HomeScreen.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  decks: PropTypes.objectOf(PropTypes.any),
+};
+
+const mapStateToProps = ({ decks }) => ({
+  decks,
+});
+
+export default connect(mapStateToProps)(HomeScreen);
