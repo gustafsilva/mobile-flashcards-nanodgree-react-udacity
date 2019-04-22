@@ -37,7 +37,10 @@ class DeckScreen extends Component {
                 <Text style={styles.text}>Add Card</Text>
               </Button>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('QuizScreen', { deckId })}
+            >
               <Button backgroundColor={Colors.info}>
                 <Text style={styles.text}>Start Quiz</Text>
               </Button>
