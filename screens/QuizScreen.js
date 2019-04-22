@@ -9,7 +9,6 @@ import {
 } from 'react-native';
 
 import Box from '../components/Box';
-import Button from '../components/FlashCardButton';
 import Colors from '../constants/Colors';
 import FlashCardButton from '../components/FlashCardButton';
 import { formatQuizResponse } from '../utils/helpers';
@@ -20,6 +19,12 @@ class QuizScreen extends Component {
     score: 0,
     showAnswer: false,
   }
+
+  reset = () => this.setState({
+    currentQuestion: 0,
+    score: 0,
+    showAnswer: false,
+  });
 
   renderEndQuiz = () => {
     const { score } = this.state;
@@ -33,8 +38,11 @@ class QuizScreen extends Component {
         <Box>
           <Text style={styles.performaceFeedback}>{`${performace}%`}</Text>
           <Text style={styles.responseFeedback}>{response}</Text>
-          <TouchableOpacity onPress={() => navigation.navigate('HomeScreen')}>
-            <Text style={styles.goToDeckScreenBtn}>Go to the decks screen</Text>
+          <TouchableOpacity onPress={this.reset}>
+            <Text style={styles.goToDeckScreenBtn}>Restart Quiz</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.goBack()}>
+            <Text style={styles.goToDeckScreenBtn}>Back to Deck</Text>
           </TouchableOpacity>
         </Box>
       </View>
@@ -48,10 +56,12 @@ class QuizScreen extends Component {
   handleCorrectQuiz = () => this.setState(state => ({
     score: state.score + 1,
     currentQuestion: state.currentQuestion + 1,
+    showAnswer: false,
   }));
 
   handleIncorrectQuiz = () => this.setState(state => ({
     currentQuestion: state.currentQuestion + 1,
+    showAnswer: false,
   }));
 
   render() {

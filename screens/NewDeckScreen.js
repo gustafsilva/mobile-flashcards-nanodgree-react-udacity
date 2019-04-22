@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 
 import Box from '../components/Box';
 import Button from '../components/FlashCardButton';
@@ -30,15 +29,15 @@ class NewDeckScreen extends Component {
     if (title !== '') {
       dispatch(handleAddDeck(title));
       this.setState({ title: '' });
-      this.toHome();
+      this.toDeckScreen();
     }
   };
 
-  toHome = () => {
+  toDeckScreen = () => {
     const { navigation } = this.props;
-    const actionToHome = NavigationActions.navigate({ routeName: 'HomeScreen' });
+    const { title } = this.state;
 
-    navigation.dispatch(actionToHome);
+    navigation.navigate('DeckScreen', { deckId: title });
   }
 
   render() {
