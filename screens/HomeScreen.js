@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 import {
   StyleSheet,
   Text,
-  View,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 
 import Box from '../components/Box';
-import FlashMobileStatusBar from '../components/FlashMobileStatusBar';
 import colors from '../constants/Colors';
 import { handleGetDecks } from '../store/actions/decks';
 
@@ -24,7 +23,7 @@ class HomeScreen extends React.Component {
   renderEmptyDecks = () => (
     <TouchableOpacity onPress={() => { }}>
       <Box>
-        <Text style={styles.text}>
+        <Text style={styles.title}>
           👋 If you do not have an account yet, register now!
         </Text>
       </Box>
@@ -38,7 +37,12 @@ class HomeScreen extends React.Component {
       Object.keys(decks).map(key => (
         <TouchableOpacity onPress={() => { }} key={key}>
           <Box>
-            <Text style={styles.text}>{decks[key].title}</Text>
+            <Text style={[styles.title, styles.textCenter]}>
+              {decks[key].title}
+            </Text>
+            <Text style={[styles.lenQuestions, styles.textCenter]}>
+              {`${decks[key].questions.length} cards`}
+            </Text>
           </Box>
         </TouchableOpacity>
       ))
@@ -50,12 +54,12 @@ class HomeScreen extends React.Component {
     const { decks } = this.props;
 
     return (
-      <View style={styles.container}>
+      <ScrollView style={styles.container}>
         {decks === null
           ? this.renderEmptyDecks()
           : this.renderDecks(decks)
         }
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -65,10 +69,16 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: colors.light,
   },
-  text: {
-    fontSize: 18,
+  title: {
+    fontSize: 19,
     color: colors.black,
-  }
+  },
+  lenQuestions: {
+    color: colors.silver,
+  },
+  textCenter: {
+    textAlign: 'center',
+  },
 });
 
 HomeScreen.defaultProps = {

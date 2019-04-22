@@ -1,19 +1,14 @@
 import { createStackNavigator } from 'react-navigation';
 
-import HomeScreen from '../screens/HomeScreen';
-import colors from '../constants/Colors';
+import MainTabNavigator from './MainTabNavigator';
 
 const MainStackNavigator = {
   Home: {
-    screen: HomeScreen,
+    screen: MainTabNavigator,
     navigationOptions: {
-      headerTintColor: colors.white,
-      headerStyle: {
-        backgroundColor: colors.primary,
-        paddingTop: 0,
-      }
-    }
-  }
+      header: null,
+    },
+  },
 };
 
 export default createStackNavigator(MainStackNavigator);

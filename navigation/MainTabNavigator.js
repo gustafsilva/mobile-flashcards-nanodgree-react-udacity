@@ -4,14 +4,15 @@ import {
   createMaterialTopTabNavigator,
   createAppContainer,
 } from 'react-navigation';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 
 import HomeScreen from '../screens/HomeScreen';
+import NewDeckScreen from '../screens/NewDeckScreen';
 import colors from '../constants/Colors';
 import { getPlatformOS } from '../utils/helpers';
 
 const RouteConfigs = {
-  HomeScren: {
+  HomeScreen: {
     screen: HomeScreen,
     navigationOptions: {
       tabBarLabel: 'Decks',
@@ -19,7 +20,7 @@ const RouteConfigs = {
     }
   },
   NewDeckScreen: {
-    screen: HomeScreen,
+    screen: NewDeckScreen,
     navigationOptions: {
       tabBarLabel: 'New Deck',
       tabBarIcon: ({ tintColor }) => <Ionicons name="md-add" size={30} color={tintColor} />

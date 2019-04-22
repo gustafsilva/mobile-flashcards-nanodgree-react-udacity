@@ -11,4 +11,5 @@ export default {
   silver: '#cecece',
   white: '#ffffff',
   light: '#f4f4f4',
+  input: '#e4e4e4',
 };
