@@ -18,15 +18,6 @@ $ npm start
 A screen in your browser will open, you can open the App in an android or ios emulator.
 Or scan the QR Code using the Expo Application directly on your celebrular.
 
-## Main Used Techologies :rocket:
-
-- [React](http://reactjs.org)
-- [React Native](https://facebook.github.io/react-native/)
-- [React Navigation](https://reactnavigation.org/)
-- [Redux](https://redux.js.org/)
-- [redux-thunk](https://github.com/reduxjs/redux-thunk)
-- [ESlint](https://eslint.org/)
-
 ## Main Available Scripts :fire:
 
 In the project directory, you can run:
@@ -40,4 +31,14 @@ Start a development server using the expo.
 Performs an analysis of all code in mass `./src` with a linter.
 Standard used in the project is **Airbnb**, more information [click here](https://github.com/airbnb/javascript).
 
+## Main Used Techologies :rocket:
+
+- [React](http://reactjs.org)
+- [React Native](https://facebook.github.io/react-native/)
+- [React Navigation](https://reactnavigation.org/)
+- [Redux](https://redux.js.org/)
+- [redux-thunk](https://github.com/reduxjs/redux-thunk)
+- [ESlint](https://eslint.org/)
+
 ## License
+The contents of this repository are covered under the [MIT License](./LICENSE).
