@@ -33,9 +33,10 @@ class HomeScreen extends React.Component {
 
   renderDecks = () => {
     const { decks, navigation } = this.props;
+    const keys = Object.keys(decks).reverse();
 
     return (
-      Object.keys(decks).map(key => (
+      keys.map(key => (
         <TouchableOpacity onPress={() => navigation.navigate('DeckScreen', { deckId: key })} key={key}>
           <Box>
             <Deck id={key} />

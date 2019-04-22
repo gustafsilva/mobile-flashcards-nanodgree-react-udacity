@@ -20,16 +20,16 @@ const decks = (state = INIT_STATE_DECKS_STATE, action) => {
         }
       };
     case ADD_CARD_TO_DECK:
-      const deck = state[action.card];
+      const deck = state[action.title];
       const { questions } = deck;
 
       return {
         ...state,
-        [action.card]: {
+        [action.title]: {
           ...deck,
           questions: [
             ...questions,
-            action.title
+            action.card,
           ]
         }
       };

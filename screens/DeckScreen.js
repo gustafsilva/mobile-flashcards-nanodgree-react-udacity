@@ -29,7 +29,10 @@ class DeckScreen extends Component {
           <Deck id={deckId} />
 
           <View style={styles.buttonsContainer}>
-            <TouchableOpacity style={styles.button}>
+            <TouchableOpacity
+              style={styles.button}
+              onPress={() => navigation.navigate('AddCardScreen', { deckId })}
+            >
               <Button backgroundColor={Colors.success}>
                 <Text style={styles.text}>Add Card</Text>
               </Button>
@@ -40,6 +43,7 @@ class DeckScreen extends Component {
               </Button>
             </TouchableOpacity>
           </View>
+
         </Box>
 
       </View>

@@ -24,18 +24,18 @@ export const saveDeckTitle = title => AsyncStorage.mergeItem(DECKS_STORAGE_KEY, 
 /** Dado dois argumentos, title e card, ele adiciona o cartão à lista de perguntas
  *  ao baralho com o título associado.
  * */
-export function addCardToDeck(title, card) {
-  const decks = getDecks();
-  const deck = decks[card];
+export async function addCardToDeck(title, card) {
+  const decks = await getDecks();
+  const deck = decks[title];
   const { questions } = deck;
 
   const newDecks = {
     ...decks,
-    [card]: {
+    [title]: {
       ...deck,
       questions: [
         ...questions,
-        title
+        card,
       ]
     }
   };
