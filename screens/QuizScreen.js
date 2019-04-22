@@ -11,13 +11,18 @@ import {
 import Box from '../components/Box';
 import Colors from '../constants/Colors';
 import FlashCardButton from '../components/FlashCardButton';
-import { formatQuizResponse } from '../utils/helpers';
+import { formatQuizResponse, clearLocalNotification, setLocalNotification } from '../utils/helpers';
 
 class QuizScreen extends Component {
   state = {
     currentQuestion: 0,
     score: 0,
     showAnswer: false,
+  }
+
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification());
   }
 
   reset = () => this.setState({
