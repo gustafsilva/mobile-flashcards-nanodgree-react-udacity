@@ -9,15 +9,12 @@ import {
 import { connect } from 'react-redux';
 
 import Box from '../components/Box';
+import FlashMobileStatusBar from '../components/FlashMobileStatusBar';
 import colors from '../constants/Colors';
 import { handleGetDecks } from '../store/actions/decks';
 
 
 class HomeScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Decks',
-  };
-
   componentDidMount() {
     const { dispatch } = this.props;
 

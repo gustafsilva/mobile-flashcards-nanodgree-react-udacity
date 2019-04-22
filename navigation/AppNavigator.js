@@ -1,5 +1,5 @@
 import { createAppContainer } from 'react-navigation';
 
-import MainStackNavigator from './MainStackNavigator';
+import MainTabNavigator from './MainTabNavigator';
 
-export default createAppContainer(MainStackNavigator);
+export default createAppContainer(MainTabNavigator);
