@@ -15,7 +15,6 @@ class App extends Component {
     return (
       <Provider store={store}>
         <View style={{ flex: 1 }}>
-          <FlashMobileStatusBar backgroundColor={colors.primary} />
           <AppNavigator />
         </View>
       </Provider>

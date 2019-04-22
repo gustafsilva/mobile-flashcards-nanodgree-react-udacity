@@ -12,7 +12,7 @@ import { handleGetDecks } from '../store/actions/decks';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    title: 'Decks',
   };
 
   componentDidMount() {
@@ -53,7 +53,7 @@ HomeScreen.defaultProps = {
 
 HomeScreen.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  decks: PropTypes.objectOf(PropTypes.any),
+  decks: PropTypes.arrayOf(PropTypes.any),
 };
 
 const mapStateToProps = ({ decks }) => ({
