@@ -9,8 +9,14 @@ import AppNavigator from './navigation/AppNavigator';
 import store from './store';
 import colors from './constants/Colors';
 import FlashMobileStatusBar from './components/FlashMobileStatusBar';
+import { clearLocalNotification, setLocalNotification } from './utils/helpers';
 
 class App extends Component {
+  componentDidMount() {
+    clearLocalNotification()
+      .then(setLocalNotification());
+  }
+
   render() {
     return (
       <Provider store={store}>
