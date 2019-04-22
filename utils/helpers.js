@@ -1,6 +1,6 @@
 import { Platform } from 'react-native';
 
-export const getPlatformOS = () => 'ios';
+export const getPlatformOS = () => Platform.OS;
 
 export const formatQuizResponse = (score, numberQuestions) => {
   const performance = score / numberQuestions;

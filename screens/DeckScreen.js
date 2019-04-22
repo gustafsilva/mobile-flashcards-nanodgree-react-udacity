@@ -20,7 +20,7 @@ class DeckScreen extends Component {
   });
 
   render() {
-    const { navigation } = this.props;
+    const { navigation, lenCards } = this.props;
     const { deckId } = navigation.state.params;
 
     return (
@@ -37,14 +37,17 @@ class DeckScreen extends Component {
                 <Text style={styles.text}>Add Card</Text>
               </Button>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.button}
-              onPress={() => navigation.navigate('QuizScreen', { deckId })}
-            >
-              <Button backgroundColor={Colors.info}>
-                <Text style={styles.text}>Start Quiz</Text>
-              </Button>
-            </TouchableOpacity>
+
+            {lenCards > 0 && (
+              <TouchableOpacity
+                style={styles.button}
+                onPress={() => navigation.navigate('QuizScreen', { deckId })}
+              >
+                <Button backgroundColor={Colors.info} disabled={lenCards === 0}>
+                  <Text style={styles.text}>Start Quiz</Text>
+                </Button>
+              </TouchableOpacity>
+            )}
           </View>
 
         </Box>
@@ -75,6 +78,11 @@ const styles = StyleSheet.create({
 
 DeckScreen.propTypes = {
   navigation: PropTypes.objectOf(PropTypes.any).isRequired,
+  lenCards: PropTypes.number.isRequired,
 };
 
-export default connect()(DeckScreen);
+const mapStateToProps = ({ decks }, { navigation }) => ({
+  lenCards: decks[navigation.state.params.deckId].questions.length,
+});
+
+export default connect(mapStateToProps)(DeckScreen);
