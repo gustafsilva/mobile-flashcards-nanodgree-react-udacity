@@ -1,6 +1,9 @@
 import { createStackNavigator } from 'react-navigation';
+import { Constants } from 'expo';
 
 import MainTabNavigator from './MainTabNavigator';
+import DeckScreen from '../screens/DeckScreen';
+import Colors from '../constants/Colors';
 
 const MainStackNavigator = {
   Home: {
@@ -9,6 +12,23 @@ const MainStackNavigator = {
       header: null,
     },
   },
+  DeckScreen: {
+    screen: DeckScreen,
+    navigationOptions: {
+      headerTintColor: Colors.white,
+      headerStyle: {
+        marginTop: -Constants.statusBarHeight,
+        backgroundColor: Colors.primary,
+        shadowColor: 'rgba(0, 0, 0, 0.24)',
+        shadowOffset: {
+          width: 0,
+          height: 3,
+        },
+        shadowRadius: 6,
+        shadowOpacity: 1,
+      },
+    },
+  }
 };
 
-export default createStackNavigator(MainStackNavigator);
+export default createStackNavigator(MainStackNavigator, { headerMode: 'float' });

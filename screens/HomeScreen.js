@@ -9,6 +9,7 @@ import {
 import { connect } from 'react-redux';
 
 import Box from '../components/Box';
+import Deck from '../components/Deck';
 import colors from '../constants/Colors';
 import { handleGetDecks } from '../store/actions/decks';
 
@@ -31,18 +32,13 @@ class HomeScreen extends React.Component {
   );
 
   renderDecks = () => {
-    const { decks } = this.props;
+    const { decks, navigation } = this.props;
 
     return (
       Object.keys(decks).map(key => (
-        <TouchableOpacity onPress={() => { }} key={key}>
+        <TouchableOpacity onPress={() => navigation.navigate('DeckScreen', { deckId: key })} key={key}>
           <Box>
-            <Text style={[styles.title, styles.textCenter]}>
-              {decks[key].title}
-            </Text>
-            <Text style={[styles.lenQuestions, styles.textCenter]}>
-              {`${decks[key].questions.length} cards`}
-            </Text>
+            <Deck id={key} />
           </Box>
         </TouchableOpacity>
       ))
@@ -68,16 +64,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.light,
-  },
-  title: {
-    fontSize: 19,
-    color: colors.black,
-  },
-  lenQuestions: {
-    color: colors.silver,
-  },
-  textCenter: {
-    textAlign: 'center',
   },
 });
 

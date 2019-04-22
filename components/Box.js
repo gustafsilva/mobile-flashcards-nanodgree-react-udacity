@@ -31,7 +31,7 @@ const styles = StyleSheet.create({
 });
 
 Box.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Box;

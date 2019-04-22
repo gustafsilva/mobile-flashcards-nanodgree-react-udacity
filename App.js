@@ -4,8 +4,8 @@ import {
   View,
 } from 'react-native';
 import { Provider } from 'react-redux';
-import AppNavigator from './navigation/AppNavigator';
 
+import AppNavigator from './navigation/AppNavigator';
 import store from './store';
 import colors from './constants/Colors';
 import FlashMobileStatusBar from './components/FlashMobileStatusBar';
